@@ -19,44 +19,19 @@ void imprime(No *atualPtr);//recebe o ponteiro do no atual para imprimir os valo
 
 int main(){
 
-  int op;
   char item;
   No *cabeca = NULL;//cria uma variável dinamica(ponteiro) que aponta para NULL
 
-  //Menu
-  system("clear");
-  printf("Digite sua escolha:\n");
-  printf(" 1 para inserir na lista:\n");
-  printf(" 2 para remover da lista:\n");
-  printf(" 3 imprimir lista:\n");
-  printf(" 4 sair\n");
-  scanf("%d", &op);
+system("clear");
+
+while(1){
+  printf("Digite um caractere:\n");
+  scanf("\n%c", &item);
   setbuf(stdin, NULL);
-
-  while(op!=4){
-    switch(op){
-      case 1:
-          printf("Digite um caractere:\n");
-          scanf("\n%c", &item);
-          setbuf(stdin, NULL);
-          inserir(&cabeca, item);//cabeca ja contem um endereco(NULL), &cabeca eh um endereco para outro endereco(lembre-se que o parametro eh um ponteiro para ponteiro, portanto eh necessario passar o "endereco de um endereco")
-          imprime(cabeca);
-          break;
-
-      case 2:
-        break;
-
-      case 3:
-          imprime(cabeca);
-        break;
-
-      default:
-          printf("Escolha invalida\n");
-        break;
-      }
-
-    }
-    return 0;
+  inserir(&cabeca, item);//cabeca ja contem um endereco(NULL), &cabeca eh um endereco para outro endereco(lembre-se que o parametro eh um ponteiro para ponteiro, portanto eh necessario passar o "endereco de um endereco")
+  imprime(cabeca);
+}
+  return 0;
 }
 
 void inserir(No **inicioPtr, char valor){//ponteiro para ponteiro, pois aponta para o ponteiro *novo
