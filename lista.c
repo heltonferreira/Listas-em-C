@@ -19,17 +19,30 @@ typedef No *NoPtr;// define o tipo No para um ponteiro
 int main(){
   system("clear");
 
-  //Menu
   int op;
   char item;
+  NoPtr cabeca = NULL;//cria uma variável dinamica(ponteiro) que aponta para NULL
 
+  //Menu
   printf("Digite sua escolha:\n");
   printf(" 1 para inserir na lista:\n");
   printf(" 2 para remover da lista:\n");
   printf(" 3 sair:\n");
+  scanf("%d", &op);
 
+  switch(op){
+    case 1:
+      break;
 
-  NoPtr cabeca = NULL;//cria uma variável dinamica(ponteiro) que aponta para NULL
+    case 2:
+      break;
+
+    case 3:
+      break;
+
+    default:
+      break;
+  }
 
   return 0;
 }
