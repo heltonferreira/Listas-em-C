@@ -15,6 +15,7 @@ typedef struct estruturaNo No;// define o tipo estruturaNo para No
 
 //Protótipos
 void inserir(No **inicioPtr, char informacao);//ponteiro que aponta para o inicio(como se fosse uma nova cabeca) e a informacao a ser armazenada
+void imprime(No *atualPtr);//recebe o ponteiro do no atual para imprimir os valores
 
 int main(){
   system("clear");
@@ -27,17 +28,20 @@ int main(){
   printf("Digite sua escolha:\n");
   printf(" 1 para inserir na lista:\n");
   printf(" 2 para remover da lista:\n");
-  printf(" 3 sair:\n");
+  printf(" 3 imprimir lista:\n");
+  printf(" 4 sair\n");
   scanf("%d", &op);
 
   switch(op){
     case 1:
+      inserir(&cabeca, 'a');//cabeca ja contem um endereco(NULL), &cabeca eh um endereco para outro endereco(lembre-se que o parametro eh um ponteiro para ponteiro, portanto eh necessario passar o "endereco de um endereco")
       break;
 
     case 2:
       break;
 
     case 3:
+      imprime(cabeca);
       break;
 
     default:
@@ -55,6 +59,19 @@ void inserir(No **inicioPtr, char valor){//ponteiro para ponteiro, pois aponta p
     novoPtr->proxPtr = NULL;//o ponteiro que aponta para um novo no, recebe NULL para o campo que aponta para o proximo ponteiro
 
     anteriorPtr = NULL; //o ponteiro que aponta para o no anterior, recebe como endereco NULL
-    atualPtr = *inicioPtr;//o ponteiro do proprio no atual, recebe como endereco o conteudo de inicioPtr(lembre-se que o conteudo de inicioPtr tbm eh um endereco, pois inicioPtr eh um ponteiro para ponteiro)
+    atualPtr = *inicioPtr;//o ponteiro que aponta para o no atual, recebe como endereco o conteudo de inicioPtr(lembre-se que o conteudo de inicioPtr tbm eh um endereco, pois inicioPtr eh um ponteiro para ponteiro)
   }
+}
+
+void imprime(No *atualPtr){
+    if(atualPtr == NULL){//se o ponteiro que aponta para o no atual aponta para lugar nenhum(endereco vazio)
+        printf("A lista está vazia\n");
+    }
+    else{
+        printf("Lista: \n");
+        while(atualPtr!=NULL){//enquanto o ponteiro que aponta para o no atual, conter um endereco de memoria(diferente de NULL)
+          printf("%c --> ", atualPtr->dado);
+        }
+    }
+
 }
